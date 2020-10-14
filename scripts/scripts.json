@@ -1,0 +1,21 @@
+{
+  "scripts-webpack": {
+    "dev": "cross-env NODE_ENV=development webpack --mode development",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open"
+  },
+  "scripts-mern": {    
+    "start": "cross-env NODE_ENV=production node app.js",
+    "server": "nodemon app.js",
+    "client": "npm run start --prefix client",
+    "client:install": "npm install --prefix client",
+    "client:build": "npm run build --prefix client",
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
+  },
+  "scripts-linter": {  
+    "lint": "tsc && npm run lint:ts",
+    "lint:ts": "eslint './src/**/*.{ts,tsx}'",
+    "prettier:ts": "prettier-eslint --list-different $PWD/'src/**/*.{ts,tsx}'; prettier-eslint --write $PWD/'src/**/*.{ts,tsx}'"
+  }
+}
